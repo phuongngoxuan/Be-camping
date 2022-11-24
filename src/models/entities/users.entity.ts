@@ -4,36 +4,36 @@ import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateCol
 import { HistoriesEntity } from './histories.entity';
 
 @Entity({
-  name: 'users',
+    name: 'users'
 })
 export class UsersEntity {
-  @PrimaryGeneratedColumn()
-  id: number;
+    @PrimaryGeneratedColumn()
+    id: number;
 
-  @Column()
-  @Expose()
-  email: string;
+    @Column()
+    @Expose()
+    email: string;
 
-  @Column()
-  @Expose()
-  address: string;
+    @Column()
+    @Expose()
+    address: string;
 
-  @Column()
-  @Expose()
-  role: string;
+    @Column()
+    @Expose()
+    role: string;
 
-  @Column()
-  @Expose()
-  status: string;
+    @Column()
+    @Expose()
+    status: string;
 
-  @OneToMany(() => HistoriesEntity, (history) => history.user)
-  history: HistoriesEntity[];
+    @OneToMany(() => HistoriesEntity, (history) => history.user)
+    history: HistoriesEntity[];
 
-  @CreateDateColumn({ name: 'created_at' })
-  @Transform(dateTransformer)
-  createdAt: Date;
+    @CreateDateColumn({ name: 'created_at' })
+    @Transform(dateTransformer)
+    createdAt: Date;
 
-  @UpdateDateColumn({ name: 'updated_at' })
-  @Transform(dateTransformer)
-  updatedAt: Date;
+    @UpdateDateColumn({ name: 'updated_at' })
+    @Transform(dateTransformer)
+    updatedAt: Date;
 }
