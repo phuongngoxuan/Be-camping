@@ -18,13 +18,23 @@ export class createUsersTable1645095329121 implements MigrationInterface {
                     },
                     {
                         name: 'email',
-                        type: 'varchar',
-                        isNullable: true
+                        type: 'varchar'
                     },
                     {
-                        name: 'address',
+                        name: 'password',
+                        type: 'varchar'
+                    },
+                    {
+                        name: 'status',
                         type: 'varchar',
-                        isNullable: true
+                        default: `'${UserStatus.ACTIVE}'`,
+                        comment: Object.keys(UserStatus).join(',')
+                    },
+                    {
+                        name: 'phone_number',
+                        type: 'varchar',
+                        isNullable: false,
+                        isUnique: true
                     },
                     {
                         name: 'role',
@@ -34,10 +44,13 @@ export class createUsersTable1645095329121 implements MigrationInterface {
                         comment: Object.keys(UserRole).join(',')
                     },
                     {
-                        name: 'status',
-                        type: 'varchar(20)',
-                        default: `'${UserStatus.ACTIVE}'`,
-                        comment: Object.keys(UserStatus).join(',')
+                        name: 'is_online',
+                        type: 'boolean',
+                        default: false
+                    },
+                    {
+                        name: 'address',
+                        type: 'varchar'
                     },
                     {
                         name: 'created_at',
