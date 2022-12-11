@@ -49,7 +49,7 @@ export class media1669258756085 implements MigrationInterface {
                         isNullable: false
                     },
                     {
-                        name: 'tent_type_id ',
+                        name: 'item_type_id ',
                         type: 'int',
                         unsigned: true,
                         isNullable: false
@@ -86,9 +86,9 @@ export class media1669258756085 implements MigrationInterface {
         await queryRunner.createForeignKey(
             'media',
             new TableForeignKey({
-                columnNames: ['tent_type_id'],
+                columnNames: ['item_type_id'],
                 referencedColumnNames: ['id'],
-                referencedTableName: 'tentTypes',
+                referencedTableName: 'itemTypes',
                 onDelete: 'CASCADE'
             })
         );
@@ -137,10 +137,10 @@ export class media1669258756085 implements MigrationInterface {
         await queryRunner.dropForeignKey('chat_id', foreignKeyChatId);
         await queryRunner.dropColumn('media', 'chat_id');
 
-        // Drop FK tent_type_id
-        const foreignKeyTent_Type_Id = table.foreignKeys.find((fk) => fk.columnNames.indexOf('tent_type_id') !== -1);
-        await queryRunner.dropForeignKey('tent_type_id', foreignKeyTent_Type_Id);
-        await queryRunner.dropColumn('media', 'tent_type_id');
+        // Drop FK item_type_id
+        const foreignKeyTent_Type_Id = table.foreignKeys.find((fk) => fk.columnNames.indexOf('item_type_id') !== -1);
+        await queryRunner.dropForeignKey('item_type_id', foreignKeyTent_Type_Id);
+        await queryRunner.dropColumn('media', 'item_type_id');
 
         await queryRunner.dropTable('media');
     }

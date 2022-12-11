@@ -17,14 +17,35 @@ export class tables1669258616090 implements MigrationInterface {
                         unsigned: true
                     },
                     {
-                        name: 'text',
-                        type: 'varchar',
-                        isNullable: true
+                        name: 'brand',
+                        type: 'varchar'
+                    },
+                    {
+                        name: 'status',
+                        type: 'varchar'
+                    },
+                    {
+                        name: 'price',
+                        type: 'decimal',
+                        precision: 40,
+                        scale: 0,
+                        isNullable: false,
+                        default: 0
+                    },
+                    {
+                        name: 'discount',
+                        type: 'int',
+                        default: 0
+                    },
+                    {
+                        name: 'describe',
+                        type: 'varchar'
                     },
                     {
                         name: 'user_id',
-                        type: 'varchar',
-                        isNullable: true
+                        type: 'int',
+                        unsigned: true,
+                        isNullable: false
                     },
                     {
                         name: 'view',
