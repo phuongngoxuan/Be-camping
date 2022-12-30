@@ -27,6 +27,16 @@ export class commentChildComment1669258731443 implements MigrationInterface {
                         type: 'int',
                         unsigned: true,
                         isNullable: false
+                    },
+                    {
+                        name: 'created_at',
+                        type: 'datetime',
+                        default: 'CURRENT_TIMESTAMP'
+                    },
+                    {
+                        name: 'updated_at',
+                        type: 'datetime',
+                        default: 'CURRENT_TIMESTAMP'
                     }
                 ]
             })

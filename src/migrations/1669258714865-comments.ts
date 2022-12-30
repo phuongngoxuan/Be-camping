@@ -32,6 +32,16 @@ export class comments1669258714865 implements MigrationInterface {
                         name: 'text',
                         type: 'varchar',
                         isNullable: false
+                    },
+                    {
+                        name: 'created_at',
+                        type: 'datetime',
+                        default: 'CURRENT_TIMESTAMP'
+                    },
+                    {
+                        name: 'updated_at',
+                        type: 'datetime',
+                        default: 'CURRENT_TIMESTAMP'
                     }
                 ]
             })

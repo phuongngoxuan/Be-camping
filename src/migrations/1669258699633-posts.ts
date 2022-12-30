@@ -30,6 +30,16 @@ export class posts1669258699633 implements MigrationInterface {
                         name: 'view',
                         type: 'int',
                         default: 0
+                    },
+                    {
+                        name: 'created_at',
+                        type: 'datetime',
+                        default: 'CURRENT_TIMESTAMP'
+                    },
+                    {
+                        name: 'updated_at',
+                        type: 'datetime',
+                        default: 'CURRENT_TIMESTAMP'
                     }
                 ]
             })

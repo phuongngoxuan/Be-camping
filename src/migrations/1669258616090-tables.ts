@@ -1,4 +1,4 @@
-import { MigrationInterface, QueryRunner, Table } from 'typeorm';
+import { MigrationInterface, QueryRunner, Table, TableForeignKey } from 'typeorm';
 
 export class tables1669258616090 implements MigrationInterface {
     name = 'tables1669258616090';
@@ -51,13 +51,41 @@ export class tables1669258616090 implements MigrationInterface {
                         name: 'view',
                         type: 'varchar',
                         isNullable: true
+                    },
+                    {
+                        name: 'created_at',
+                        type: 'datetime',
+                        default: 'CURRENT_TIMESTAMP'
+                    },
+                    {
+                        name: 'updated_at',
+                        type: 'datetime',
+                        default: 'CURRENT_TIMESTAMP'
                     }
                 ]
             })
         );
+
+        await queryRunner.createForeignKey(
+            'tables',
+            new TableForeignKey({
+                columnNames: ['user_id'],
+                referencedColumnNames: ['id'],
+                referencedTableName: 'users',
+                onDelete: 'CASCADE'
+            })
+        );
+
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.query(`DROP TABLE IF EXISTS tables`);
+        const table = await queryRunner.getTable('tables');
+
+        // Drop FK user_id
+        const foreignKeyUserId = table.foreignKeys.find((fk) => fk.columnNames.indexOf('user_id') !== -1);
+        await queryRunner.dropForeignKey('user_id', foreignKeyUserId);
+        await queryRunner.dropColumn('tables', 'user_id');
+        
+        await queryRunner.dropTable('tables');
     }
 }

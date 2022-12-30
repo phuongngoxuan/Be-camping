@@ -39,29 +39,8 @@ export class createHistoriesTable1645110734864 implements MigrationInterface {
                         type: 'varchar'
                     },
                     {
-                        name: 'tx_hash',
-                        type: 'varchar'
-                    },
-                    {
-                        name: 'block_number',
-                        type: 'varchar'
-                    },
-                    {
-                        name: 'log_index',
-                        type: 'int'
-                    },
-                    {
                         name: 'action',
                         type: 'varchar'
-                    },
-                    {
-                        name: 'block_timestamp',
-                        type: 'int'
-                    },
-                    {
-                        name: 'pool_id',
-                        type: 'int',
-                        default: null
                     },
                     {
                         name: 'data',

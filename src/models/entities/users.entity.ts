@@ -16,15 +16,23 @@ export class UsersEntity {
 
     @Column()
     @Expose()
-    address: string;
+    password: string;
+
+    @Column()
+    @Expose()
+    status: string;
+
+    @Column({ name: 'phone_number' })
+    @Expose()
+    phone_number: string;
 
     @Column()
     @Expose()
     role: string;
 
-    @Column()
+    @Column({ name: 'is_online' })
     @Expose()
-    status: string;
+    isOnline: boolean;
 
     @OneToMany(() => HistoriesEntity, (history) => history.user)
     history: HistoriesEntity[];
